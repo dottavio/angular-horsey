@@ -1,0 +1,81 @@
+<html>
+<head>
+  <title>Angular-horsey - Demo file</title>
+  <link rel="stylesheet" type="text/css" href="../bower_components/horsey/dist/horsey.min.css">
+</head>
+<body>
+  <div ng-app="app" ng-controller="demo">
+    <input id='hy' angular-horsey suggestions="suggestions" config="configExample1" expose="hyApi"/>
+    <input id='hy2' angular-horsey suggestions="suggestions2" config="configExample2" />
+    <input id='hy3' angular-horsey suggestions="suggestions3" config="configExample3" />
+    <textarea angular-horsey suggestions="suggestions3" config="configExample3" ></textarea>
+
+    <button ng-click="addS()"></button>
+  </div>
+
+  <script type="text/javascript" src="../bower_components/angular/angular.min.js" ></script>
+  <script type="text/javascript" src="../bower_components/horsey/dist/horsey.js" ></script>
+  <script type="text/javascript" src="../src/angular-horsey.js" ></script>
+  <script type="text/javascript" src="../src/directive/angular-horsey.js" ></script>
+
+  <script type="text/javascript">
+
+  angular
+    .module('app', ['angular-horsey'])
+    .controller('demo', ['$scope', '$timeout',
+    function($scope, $timeout){
+      $scope.hyApi = null;
+
+      $scope.addS = function(){
+        var r = Math.random() * (10 - 1) + 1;
+        $scope.hyApi.add({ value: 'Random fruit '+r, text: 'Random text '+r });
+      }
+      $timeout(function () {
+        $scope.suggestions = [
+          { value: 'banana', text: 'Bananas from Amazon Rainforest' },
+          { value: 'apple', text: 'Red apples from New Zealand' },
+          { value: 'orange', text: 'Oranges from Moscow' },
+          { value: 'lemon', text: 'Juicy lemons from Amalfitan Coast' }
+        ];
+        $scope.suggestions2 = [
+          { value: 'lemon', text: 'Juicy lemons from Amalfitan Coast' }
+        ];
+
+        $scope.suggestions3 = [
+          { value: 'banana', text: 'Bananas from Amazon Rainforest' },
+          { value: 'banana-boat', text: 'Banana Boat' },
+          { value: 'apple', text: 'Red apples from New Zealand' },
+          { value: 'apple-cider', text: 'Red apple cider beer' },
+          { value: 'orange', text: 'Oranges from Moscow' },
+          { value: 'orange-vodka', text: 'Classic orange vodka cocktail' },
+          { value: 'lemon', text: 'Juicy lemons from Amalfitan Coast' }
+        ];
+      }, 2000);
+
+
+
+      $scope.configExample1 = {
+        render: function (li, suggestion) {
+          var image = '<img class="autofruit" src="../bower_components/horsey/example/fruits/' + suggestion.value + '.png" /> ';
+          li.innerHTML = image + suggestion.text;
+        },
+        set: function (value) {
+          console.log(value);
+        }
+      };
+
+      $scope.configExample2 = {
+        render: function (li, suggestion) {
+          li.innerHTML = suggestion.text;
+        }
+      };
+
+      $scope.configExample3 = {
+        limit: 2
+      };
+
+
+    }]);
+  </script>
+</body>
+</html>

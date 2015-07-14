@@ -1,0 +1,23 @@
+{
+  "name": "angular-horsey",
+  "version": "0.0.1",
+  "authors": [
+    "dottavio <dottavio@gmail.com>"
+  ],
+  "keywords": [
+    "angular",
+    "horsey"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "horsey": "~2.5.1",
+    "angular": "~1.4.2"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "angular-horsey",
+  "version": "1.0.0",
+  "description": "Angular directive to include Horsey",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "angular",
+    "horsey"
+  ],
+  "author": "dottavio@gmail.com",
+  "license": "MIT"
+}
