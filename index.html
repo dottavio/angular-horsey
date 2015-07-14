@@ -1,0 +1,171 @@
+<html>
+<head>
+  <link href='http://bevacqua.github.io/horsey/dist/horsey.css' rel='stylesheet' type='text/css' />
+  <link href='http://bevacqua.github.io/horsey/example/example.css' rel='stylesheet' type='text/css' />
+  <title>Angular - horsey</title>
+</head>
+<body ng-app="app" ng-controller="demo">
+  <h1>Angular - horsey</h1>
+  <h3>Progressive and customizable autocomplete component</h3>
+  <div class='examples'>
+    <div class='parent'>
+      <label for='hy'>Enter the name of a fruit: </label>
+      <input id='hy' angular-horsey suggestions="suggestions"/>
+      <pre>
+        <code>
+&lt;input id='hy' angular-horsey suggestions="suggestions"/&gt;
+        </code>
+        <code>
+$scope.suggestions = ['banana', 'apple', 'orange'];
+        </code>
+      </pre>
+    </div>
+  </div>
+    <div class='parent'>
+      <label for='ly'>Lazy load the fruits, useful for AJAX! <i>(loading starts when the field is focused)</i></label>
+      <div><i id='lyr'>Being lazy...</i></div>
+      <input id='ly' angular-horsey suggestions="suggestions2" />
+      <pre>
+        <code>
+&lt;input id='ly' angular-horsey suggestions="suggestions2"/&gt;
+        </code>
+        <code>
+$timeout(function () {
+  $scope.suggestions2 = ['banana', 'apple', 'orange'];
+}, 2000);
+        </code>
+      </pre>
+    </div>
+    <div class='parent'>
+      <label for='kv'>You can also use "key value pairs": </label>
+      <input id='kv' angular-horsey suggestions="suggestions3" />
+      <pre>
+        <code>
+&lt;input id='kv' angular-horsey suggestions="suggestions3"/&gt;
+        </code>
+        <code>
+$scope.suggestions3 = [
+  { value: 'banana', text: 'Bananas from Amazon Rainforest' },
+  { value: 'apple', text: 'Red apples from New Zealand' },
+  { value: 'orange', text: 'Oranges from Moscow' },
+  { value: 'lemon', text: 'Juicy lemons from Amalfitan Coast' }
+];
+        </code>
+      </pre>
+    </div>
+    <div class='parent'>
+      <label for='ig'>But why stop there? You can render the suggestion however you like! </label>
+      <input id='ig' angular-horsey suggestions="suggestions4" plugin-conf="configExample4"/>
+      <pre>
+        <code>
+&lt;input id='ig' angular-horsey suggestions="suggestions4"
+plugin-conf="configExample4"/&gt;
+        </code>
+        <code>
+$scope.suggestions4 = angular.copy($scope.suggestions3);
+$scope.configExample4 = {
+  render: function (li, suggestion) {
+    var image = '&lt;img class="autofruit" src="js/example/fruits/' + suggestion.value + '.png" /&gt; ';
+    li.innerHTML = image + suggestion.text;
+  }
+};
+        </code>
+      </pre>
+    </div>
+    <div class='parent'>
+      <label for='ig'>You can also limit the amount of suggestions to display! </label>
+      <input id='il' angular-horsey suggestions="suggestions5" plugin-conf="configExample5"/>
+      <pre>
+        <code>
+&lt;input id='il' angular-horsey suggestions="suggestions5"
+plugin-conf="configExample5"/&gt;
+        </code>
+        <code>
+$scope.suggestions5 = [
+  { value: 'banana', text: 'Bananas from Amazon Rainforest' },
+  { value: 'banana-boat', text: 'Banana Boat' },
+  { value: 'apple', text: 'Red apples from New Zealand' },
+  { value: 'apple-cider', text: 'Red apple cider beer' },
+  { value: 'orange', text: 'Oranges from Moscow' },
+  { value: 'orange-vodka', text: 'Classic orange vodka cocktail' },
+  { value: 'lemon', text: 'Juicy lemons from Amalfitan Coast' }
+];
+$scope.configExample5 = {
+  limit: 2
+};
+        </code>
+      </pre>
+    </div>
+    <div class='parent'>
+      <label for='ig'>Want to use it as in a textarea? </label>
+      <textarea id='ta' angular-horsey suggestions="suggestions6" plugin-conf="configExample6">Add a mention somewhere in the textarea, using an at-sign like in emails. For example, you can type @michael. The cursor will actually follow you, pretty nice!</textarea>
+      <pre>
+        <code>
+&lt;textarea id='ta' angular-horsey suggestions="suggestions6"
+plugin-conf="configExample6"&gt;
+Add a mention somewhere in the textarea, using an at-sign
+like in emails. For example, you can type @michael.
+The cursor will actually follow you, pretty nice!&lt;/textarea&gt;
+        </code>
+        <code>
+$scope.suggestions6 = [
+  { value: '@michael', text: 'Michael Jackson' },
+  { value: '@jack', text: 'Jack Johnson' },
+  { value: '@ozzy', text: 'Ozzy Osbourne' }
+];
+$scope.configExample6 = {
+  anchor: '@'
+};
+        </code>
+      </pre>
+    </div>
+    <div class='parent'>
+      <label for='ig'>Want to use it as a drop-down list? </label>
+      <div id='ddl' angular-horsey suggestions="suggestions7">Click here to set fruity treat type</div>
+      <pre>
+        <code>
+&lt;div id='ddl' angular-horsey suggestions="suggestions5"&gt;
+Click here to set fruity treat type
+&lt;/div&gt;
+        </code>
+        <code>
+$scope.suggestions5 = [
+  { value: 'banana', text: 'Bananas from Amazon Rainforest' },
+  { value: 'banana-boat', text: 'Banana Boat' },
+  { value: 'apple', text: 'Red apples from New Zealand' },
+  { value: 'apple-cider', text: 'Red apple cider beer' },
+  { value: 'orange', text: 'Oranges from Moscow' },
+  { value: 'orange-vodka', text: 'Classic orange vodka cocktail' },
+  { value: 'lemon', text: 'Juicy lemons from Amalfitan Coast' }
+];
+        </code>
+      </pre>
+    </div>
+    <div class='parent'>
+      <label for='ig'>Finally you can expose the horsey's API on your scope. </label>
+      <input id='hy2' angular-horsey suggestions="suggestions8" expose="hy2API"/>
+      {{hy2API.suggestions}}<br/>
+      <button ng-click="addRandomItem()">Add item</button>
+      <pre>
+        <code>
+&lt;input id='hy2' angular-horsey suggestions="suggestions" expose="hy2API"/&gt;
+\{\{hy2API.suggestions\}\}
+&lt;button ng-clikc="addRandomItem()"&gt;Add item&lt;/button&gt;
+        </code>
+        <code>
+
+        </code>
+      </pre>
+    </div>
+  </div>
+  <h3>Get horsey on GitHub! <a href='https://github.com/bevacqua/horsey'>bevacqua/horsey</a></h3>
+  <h3>Get angular-horsey on GitHub! <a href='https://github.com/dottavio/angular-horsey'>bevacqua/horsey</a></h3>
+
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js" ></script>
+  <script type="text/javascript" src="http://bevacqua.github.io/horsey/dist/horsey.js" ></script>
+  <script type="text/javascript" src="src/angular-horsey.js" ></script>
+  <script type="text/javascript" src="src/directive/angular-horsey.js" ></script>
+  <script type="text/javascript" src="demo.js" ></script>
+
+</body>
+</html>
