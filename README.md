@@ -21,3 +21,6 @@ This is a Type ``A`` directive and you can use it on ``text``, ``textarea`` or `
 
 The attribute ``suggestions`` is an array with a list of suggestions to be presented to the user.
 The attribute ``plugin-conf`` is an Object with the Horsey's [options](https://github.com/bevacqua/horsey#options).
+
+## demo
+Demo on http://dottavio.github.io/angular-horsey/
