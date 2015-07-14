@@ -1,15 +1,22 @@
 {
   "name": "angular-horsey",
-  "version": "1.0.0",
-  "description": "Angular directive to include Horsey",
-  "main": "index.js",
+  "version": "0.0.1",
+  "description": "Angular directive for Horsey",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "angular",
     "horsey"
-  ],
-  "author": "dottavio@gmail.com",
-  "license": "MIT"
+  ],,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dottavio/angular-horsey.git"
+  }
+  "author": "Mauricio Dottavio <dottavio@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dottavio/angular-horsey/issues"
+  },
+  "homepage": "https://github.com/dottavio/angular-horsey"
 }
