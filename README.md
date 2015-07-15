@@ -23,4 +23,4 @@ The attribute ``suggestions`` is an array with a list of suggestions to be prese
 The attribute ``plugin-conf`` is an Object with the Horsey's [options](https://github.com/bevacqua/horsey#options).
 
 ## demo
-Demo on http://dottavio.github.io/angular-horsey/
+Demo on http://mdottavio.github.io/angular-horsey/
